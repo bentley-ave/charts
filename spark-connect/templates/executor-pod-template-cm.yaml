@@ -61,6 +61,7 @@ data:
       {{- end }}
       affinity:
         podAffinity:
+          {{ if .Values.spark.executor.affinity.enforceSingleZone }}
           requiredDuringSchedulingIgnoredDuringExecution:
             # all executor pods must be spawned in the same availability zone
             - labelSelector:
@@ -70,6 +71,7 @@ data:
                     values:
                       - ${SPARK_EXECUTOR_AFFINITY_ID}
               topologyKey: topology.kubernetes.io/zone
+          {{ end }}
           preferredDuringSchedulingIgnoredDuringExecution:
             # try to spawn executors on the same node as the driver pod
             - weight: 100

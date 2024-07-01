@@ -47,6 +47,8 @@ spark:
 #      storageGiB: 100
     minExecutors: 1
     maxExecutors: 4
+    affinity:
+      enforceSingleZone: true
     nodeSelector: {}
 #      dedicated: spark-connect-executors
     tolerations: []
