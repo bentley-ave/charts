@@ -13,6 +13,15 @@ spec:
   type: ClusterIP
   clusterIP: None
   sessionAffinity: ClientIP
+  ports:
+    - name: spark-ui
+      port: {{ .Values.containerPorts.sparkUi }}
+      protocol: TCP
+      targetPort: spark-ui
+    - name: spark-connect
+      port: {{ .Values.containerPorts.sparkConnect }}
+      protocol: TCP
+      targetPort: spark-connect
   selector:
     {{- include "spark.selectorLabels" . | nindent 4 }}
 {{- end }}
