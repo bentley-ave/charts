@@ -21,8 +21,6 @@ spark:
     enabled: false
     # s3 url where to save logs
     dir: "s3://spark-logs-bucket/spark-connect-logs/"
-  awsRegion: eu-central-1
-  awsRoleArn: "arn:aws:iam::123456789012:role/spark-connect-irsa"
   driver:
     cores: 1
     memoryMiB: 2048
@@ -57,6 +55,7 @@ spark:
   scratchDir: /tmp
   kubernetesEndpoint: "https://kubernetes.default.svc.cluster.local:443"
   packages: []
+  additionalProperties: {}
 
 serviceAccount:
   # Specifies whether a service account should be created
