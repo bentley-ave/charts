@@ -15,11 +15,11 @@ spec:
   sessionAffinity: ClientIP
   ports:
     - name: spark-ui
-      port: {{ .Values.containerPorts.sparkUi }}
+      port: {{ .Values.service.ports.sparkUi }}
       protocol: TCP
       targetPort: spark-ui
     - name: spark-connect
-      port: {{ .Values.containerPorts.sparkConnect }}
+      port: {{ .Values.service.ports.sparkConnect }}
       protocol: TCP
       targetPort: spark-connect
   selector:

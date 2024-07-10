@@ -76,6 +76,9 @@ service:
   # The name of the service to use.
   # If not set and create is true, a name is generated using the fullname template
   name: "spark-connect"
+  ports:
+    sparkUi: 4040
+    sparkConnect: 15002
 
 podAnnotations: {}
 
