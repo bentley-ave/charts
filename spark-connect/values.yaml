@@ -52,6 +52,9 @@ spark:
     tolerations: []
 #      - key: dedicated
 #        value: spark-connect-executors
+
+  extraVolumeMounts: []
+  extraVolumes: []
   scratchDir: /tmp
   kubernetesEndpoint: "https://kubernetes.default.svc.cluster.local:443"
   packages: []

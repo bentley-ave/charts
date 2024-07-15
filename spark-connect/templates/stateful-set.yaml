@@ -45,6 +45,9 @@ spec:
             items:
               - key: spark-properties.conf.template
                 path: spark-properties.conf.template
+        {{- with .Values.spark.extraVolumes }}
+        {{- . | toYaml | nindent 8 }}
+        {{- end }}
         {{- with .Values.spark.driver.ephemeralLocalVolume }}
         - name: "spark-local-dir-{{ .name }}"
           ephemeral:
@@ -146,6 +149,9 @@ spec:
             {{- with .Values.spark.driver.ephemeralLocalVolume }}
             - name: "spark-local-dir-{{ .name }}"
               mountPath: {{ $.Values.spark.scratchDir }}
+            {{- end }}
+            {{- with .Values.spark.extraVolumeMounts }}
+            {{- . | toYaml | nindent 12 }}
             {{- end }}
           resources:
             requests:
